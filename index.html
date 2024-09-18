@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Catálogo de Filmes</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+        li {
+            margin: 10px 0;
+        }
+    </style>
+</head>
+<body>
+    <h1>Catálogo de Filmes</h1>
+    <form id="filmeForm">
+        <input type="text" id="titulo" placeholder="Título do filme" required>
+        <input type="text" id="diretor" placeholder="Diretor do filme" required>
+        <input type="number" id="ano" placeholder="Ano de lançamento" required>
+        <button type="submit">Adicionar Filme</button>
+    </form>
+    
+    <h2>Filmes Cadastrados:</h2>
+    <ul id="catalogo"></ul>
+
+    <script>
+        const filmeForm = document.getElementById('filmeForm');
+        const catalogo = document.getElementById('catalogo');
+
+        filmeForm.addEventListener('submit', function(event) {
+            event.preventDefault();
+
+            const titulo = document.getElementById('titulo').value;
+            const diretor = document.getElementById('diretor').value;
+            const ano = document.getElementById('ano').value;
+
+            const li = document.createElement('li');
+            li.textContent = `${titulo} (${ano}) - Dirigido por ${diretor}`;
+            catalogo.appendChild(li);
+
+            filmeForm.reset();
+        });
+    </script>
+</body>
+</html>
